@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width", intitial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cash Register Project</title>
+</head>
+<main>
+      <h1>Kendel Fenner</h1>
+      <h1>Cash Register Project</h1>
+      <div id="change-due"><p>Status: OPEN</p><p>ONE HUNDRED: $100</p><p>TEN: $10</p><p>FIVE: $5</p><p>ONE: $1</p><p>QUARTER: $0.5</p><p>DIME: $0.2</p><p>PENNY: $0.04</p></div>
+      <div class="input-div">
+        <label for="cash">Enter cash from customer:</label>
+        <input type="number" id="cash" class="user-input" value="">
+        <button class="check-btn-styles" id="purchase-btn">Purchase</button>
+      </div>
+      <div class="container">
+        <div class="top-display-screen-container">
+          <p id="price-screen" class="price-screen">Total: $<span id="price">3.26</span></p>
+          <div class="connector"></div>
+        </div>
+        <div class="top-register">
+          <div class="btns-container">
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+            <button class="btn"></button>
+          </div>
+          <div id="cash-drawer-display" class="cash-drawer-display"><p><strong>Change in drawer:</strong></p>
+    <p>Pennies: $0.93</p><p>Nickels: $2.05</p><p>Dimes: $2.7</p><p>Quarters: $3.25</p><p>Ones: $88</p><p>Fives: $45</p><p>Tens: $10</p><p>Twenties: $40</p><p>Hundreds: $0</p>
+  </div>
+        </div>
+        <div class="bottom-register">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </main>
+<script src="script.js"></script>
+</html>
