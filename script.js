@@ -4,7 +4,7 @@ const purchaseButton = document.getElementById("purchase-btn");
 const cashDrawer = document.getElementById("cash-drawer-display");
 
 
-let price = 3.26;
+let price = 19.5;
 
 document.getElementById("price").innerText = price;
 
@@ -64,42 +64,25 @@ function hasFunds(array) {
     array.forEach((lilArray) => {
         total += lilArray[1];
     });
-    let difference = parseFloat(cash.value) - price;
-    let change = parseFloat(difference.toFixed(2));
-    return total >= change;
+    let difference = cash.value - price;
+    console.log(total);
+    return total >= difference;
 };
-console.log(5 <= 16.73999999999995)
 
 function calculateChange() {
     let difference = cash.value - price;
-    let change = difference.toFixed(2);
-    console.log(change);
-    changeDue = [];
-
     for (let x = 0; x < cid.length; x++) {
         let total = 0;
-        
-        while (reversedArray[x][0] <= parseFloat(change) && reversedArray[x][1].toFixed(2) >= reversedArray[x][0].toFixed(2)) {
+        while (reversedArray[x][0] <=difference && reversedArray[x][1].toFixed(2) >= reversedArray[x][0]) {
             total++;
-            console.log( "Reversed Array: " + reversedArray[x][0]);
-            change -= reversedArray[x][0].toFixed(2);
-            console.log( "Change: " + change);
+            difference -= reversedArray[x][0];
             reversedArray[x][1] -= reversedArray[x][0];
         };
         
         let adjustment = total * reversedArray[x][0];
-        console.log( "Total " + total);
-        console.log(adjustment);
-        cid[cid.length-x-1][1] -= adjustment;
-        preChangeDue[x][1] = adjustment;
-        
-    };
-
-    if (change.toFixed(2) === 0) {
-            return;
-        } else {
-
-        }
+            cid[cid.length-x-1][1] -= adjustment.toFixed(2);
+            preChangeDue[x][1] = adjustment;
+    }; 
 };
 
 //Update change due and cash in the cash drawer functions.
@@ -107,11 +90,10 @@ function calculateChange() {
 function updateChangeAmount() {
     changeDueSection.innerHTML = '';
     preChangeDue.forEach((array) => {
-        if (array[1] !== 0) {
+        if (array[1] != 0) {
             changeDue.push(array);
         }
     });
-    console.log(changeDue);
     if (changeDue.length === 0) {
         changeDueSection.innerText = "Status: INSUFFICIENT_FUNDS";
     } else if (drawerEmpty(cid)) {
@@ -136,7 +118,6 @@ function drawerEmpty(array) {
     array.forEach((lilArray) => {
         total += lilArray[1];
     })
-    console.log(total);
     return total.toFixed(2) == 0;
 }
 
